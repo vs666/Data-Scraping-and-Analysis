@@ -1,3 +1,8 @@
+'''
+This script extracts the tags used for each post and stores them in a json file named sample.json
+
+'''
+
 from lxml import etree
 import matplotlib.pyplot as plt
 import json

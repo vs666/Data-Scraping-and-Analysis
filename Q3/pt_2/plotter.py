@@ -1,3 +1,7 @@
+'''
+this program plots frequency of top-10 tags using matplotlib reading from precreated json database named sample.json
+'''
+
 import matplotlib.pyplot as plt
 import json 
 
