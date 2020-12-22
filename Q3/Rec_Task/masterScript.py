@@ -16,7 +16,7 @@ def camelotTables(filename):
 
 
 def tabulaTables(filename):
-    df = read_pdf(filename,pages="all",guess=True,multiple_tables=True,)
+    df = read_pdf(filename,pages="all",guess=True,multiple_tables=True)
     print(df)
 
 def extractorTables(filename,API):
