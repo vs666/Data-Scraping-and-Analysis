@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import sys
 import os
+import csv
 from tabula import read_pdf
 from datetime import datetime
 
@@ -11,13 +12,16 @@ def camelotTables(filename):
     tables = camelot.read_pdf(filename)
     for i in tables:
         print(type(i))
-        i.to_json('tmp.json')
-        import_content('tmp.json')
+        i.to_json(filename.replace('.pdf','.json'))
+        # import_content('tmp.json')
 
 
 def tabulaTables(filename):
+    filename = str(filename)
     df = read_pdf(filename,pages="all",guess=True,multiple_tables=True)
-    print(df)
+    with open(filename.replace('.pdf','.json'),'w+') as outf:
+        json.dump(df,outf)
+    
 
 def extractorTables(filename,API):
     from ExtractTable import ExtractTable
@@ -33,7 +37,16 @@ def plumberTables(filename):
     pdf = pdfplumber.open(filename)
     page = pdf.pages[0] # extract only first page
     tab = page.extract_table()
-    print(tab)  
+    x = 0
+    Y = {}
+    for i in tab:
+        Y[x] = json.dumps(i)
+        x+=1
+    print(Y)
+    with open(filename.replace('.pdf','.json'),'w+') as outf:
+        json.dump(Y,outf)
+    
+
 
 
 def import_content(filepath):
@@ -60,9 +73,10 @@ while True:
     print('Enter the type of table Extraction Tool you would like to use:')
     print('1. Camelot')
     print('2. Tabula-py')
-    print('3. ExtractTable [requies API Key with > 0 remaining attempts]')
+    print('3. ExtractTable [requies API Key with > 0 remaining attempts, Check API keys in keys.txt file]')
     print('4. PDF-plumber')
     print('For option 3 get an trial API key with 10 attempts from  https://extracttable.com/signup/trial.html')
+    print('File will not be created if no tables are found.')
     opt = int(input('Enter option [1-3] (0 to exit) :'))
     if opt == 0:
         break
