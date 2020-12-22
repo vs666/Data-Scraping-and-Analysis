@@ -1,16 +1,13 @@
-from ExtractTable import ExtractTable
-import pymongo
 import pandas as pd
 import json
 import sys
 import os
-import camelot
-import pdfplumber
 from tabula import read_pdf
 from datetime import datetime
 
 
 def camelotTables(filename):
+    import camelot
     tables = camelot.read_pdf(filename)
     for i in tables:
         print(type(i))
@@ -23,6 +20,7 @@ def tabulaTables(filename):
     print(df)
 
 def extractorTables(filename,API):
+    from ExtractTable import ExtractTable
     et_sess = ExtractTable(api_key=API)        
     print(et_sess.check_usage())      
     table_data = et_sess.process_file(filepath=filename, output_format="json", pages="all")
@@ -31,6 +29,7 @@ def extractorTables(filename,API):
         json.dump(table_data,outf)
 
 def plumberTables(filename):
+    import pdfplumber
     pdf = pdfplumber.open(filename)
     page = pdf.pages[0] # extract only first page
     tab = page.extract_table()
@@ -38,6 +37,7 @@ def plumberTables(filename):
 
 
 def import_content(filepath):
+    import pymongo
     mng_client = pymongo.MongoClient('localhost', 27017)
     mng_db = mng_client['test'] # Replace mongo db name
     collection_name = 'collection1' # Replace mongo db collection name
