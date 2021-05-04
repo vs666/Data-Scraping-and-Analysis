@@ -4,7 +4,7 @@ Recruitment tasks for precog-2020
 ## Submitted By 
 
 Varul Srivastava    
-B. Tech (Computer Science,2023)     
+B. Tech + MS (Computer Science,2024)     
 IIIT - Hyderabad    
 
 
