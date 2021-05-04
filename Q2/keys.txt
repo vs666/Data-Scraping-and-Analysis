@@ -1,5 +1,5 @@
 API KEY
-vcrcz36Okb0ORNmPioVc7BsSr
+xxxx
 API SECRET KEY
 xxxx
 Bearer Token
