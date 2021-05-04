@@ -10,10 +10,10 @@ import preprocessor as p
 import math
 
 DELHI_WOE_ID = 20070458
-consumer_key = "vcrcz36Okb0ORNmPioVc7BsSr"
-consumer_secret = "pO3bjApqstGzNUKXrmRnFwGump4V2BjhNsNBZyywX7MfBnbDCl"
-access_key = "740572559175913472-FszGsGTpS1CqhAqtbPgCGmzAx17ElVE"
-access_secret = "VTeZM5wv1gK5vCDcnzkAnZApLkO5N7VMV4c5KjaJpJmbe"
+consumer_key = ""
+consumer_secret = ""
+access_key = ""
+access_secret = ""
 
 W_FC = 0.30
 
